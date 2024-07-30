@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usernames</title>
+</head>
+<body>
+    <form action="/search" method="POST">
+        <label for="search" name="search" id="search">Search:</label>
+        <input type="text" name="search" id="search">
+        <button type="submit">Submit</button>
+    </form>
+    <%if (locals.usernames){%>
+        <h1>Usernames:</h1>
+        <ul>
+            <% for (let i = 0; i < locals.usernames.length; i++){ %>
+                <li><%=locals.usernames[i].username%></li>
+            <%}%>
+        </ul>
+    <%}%>
+    
+</body>
+</html>
