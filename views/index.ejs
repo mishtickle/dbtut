@@ -18,6 +18,11 @@
                 <li><%=locals.usernames[i].username%></li>
             <%}%>
         </ul>
+        <a href="/new">New username</a>
+    <%}%>
+    <%if (locals.username){%>
+        <ul><li><%=locals.username%></li></ul>
+        <a href="/">Home</a>
     <%}%>
     
 </body>

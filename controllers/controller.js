@@ -12,8 +12,9 @@ exports.getUsernames = asyncHandler(async (req, res) => {
         res.render('index', {usernames});
     }
     else{
-        const usernames = await db.getUsername(req.query.search);
-        console.log(usernames);
+        const username = await db.getUsername(req.query.search);
+        console.log(username);
+        res.render('index', {username})
     } 
 });
 

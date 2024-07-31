@@ -10,9 +10,12 @@ async function insertUsername(username) {
 }
 
 async function getUsername(user){
-    console.log(`The user is : ${user}`);
-    const username = await pool.query("SELECT * FROM usernames WHERE username = " + user)
+    const username = await pool.query("SELECT * FROM usernames WHERE username = ($1)", [user])
     console.log(username);
+    if (username.rows[0] == undefined){
+        return 'User does not exist';
+    }
+    return username.rows[0].username;
 }
 
 module.exports = {
