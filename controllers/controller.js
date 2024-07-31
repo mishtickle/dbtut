@@ -5,7 +5,6 @@ const asyncHandler = require("express-async-handler");
 //const usersStorage = require("../models/modelNameHere");
 
 exports.getUsernames = asyncHandler(async (req, res) => {
-    console.log(req.query.search);
     if (req.query.search==undefined){
         const usernames = await db.getAllUsernames();
         console.log("Usernames: ", usernames);
@@ -32,3 +31,11 @@ exports.redirectSearch = asyncHandler(async(req,res) => {
     res.redirect("/?search=" + req.body.search);
 })
 
+exports.deleteUserGet = asyncHandler(async(req,res) => {
+    res.render('delete')
+})
+
+exports.deleteUserPost = asyncHandler(async(req,res) =>{
+    db.deleteUsers();
+    res.redirect("/");
+})

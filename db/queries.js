@@ -11,15 +11,19 @@ async function insertUsername(username) {
 
 async function getUsername(user){
     const username = await pool.query("SELECT * FROM usernames WHERE username = ($1)", [user])
-    console.log(username);
     if (username.rows[0] == undefined){
         return 'User does not exist';
     }
     return username.rows[0].username;
 }
 
+async function deleteUsers(){
+    await pool.query("DELETE FROM usernames")
+}
+
 module.exports = {
   getAllUsernames,
   insertUsername,
-  getUsername
+  getUsername,
+  deleteUsers
 };
